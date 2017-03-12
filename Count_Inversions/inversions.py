@@ -48,7 +48,7 @@ def count_split_inv(X, Y):
     Z = []
     n = int(len(X))
     m = int(len(Y))
-    max = 1000
+    max = 10000000000
     no_split_inversions = 0
 
     j = 0
@@ -81,20 +81,14 @@ def count_split_inv(X, Y):
 def count_inversions(X):
 
 ## split array X into two subarrays, Left & Right ##
-    print("Starting new loop... Original array is ", X)
     number_inversions = 0
     Left, Right = divide(X)
-    print("Left & Right arrays are... ", Left, " & ", Right)
     (L, left_inversions) = sort_and_count(Left)
-    print("Sorted Left array is...", L, "with inversions ", left_inversions)
     number_inversions += left_inversions
     (R, right_inversions) = sort_and_count(Right)
-    print("Sorted Right array is...", R, "with inversions ", right_inversions)
     number_inversions += right_inversions
     (Z, no_split_inversions) = count_split_inv(L, R)
     number_inversions += no_split_inversions
-    print("Final sorted array is ", Z)
-    print("Total no. of inversions made ", number_inversions)
 
     return Z, number_inversions
 
