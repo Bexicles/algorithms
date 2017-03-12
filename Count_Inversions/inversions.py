@@ -13,7 +13,12 @@ def divide(X):
         Left = X[0:pivot]
         Right = X[pivot:]
 
-    print(Left, Right)
+    else:
+        odd_pivot = int((len(X)-1)/2)
+        Left = X[0:pivot]
+        Right = X[pivot:]
+
+
     return Left, Right
 
 
@@ -22,66 +27,74 @@ def sort_and_count(X):
     n = int(len(X))
     no_inversions = 0
 
-    if (n == 2):
-        if (X[0] > X[1]):
+    if n == 1:
+        return X, no_inversions
+
+    elif n == 2:
+        if X[0] > X[1]:
             temp = X[0]
             X[0] = X[1]
             X[1] = temp
-            no_inversions+1
-    else:
-        inversions(X)
+            no_inversions += 1
+        return X, no_inversions
 
-    return X, no_inversions
+    else:
+        (X, no_inversions) = count_inversions(X)
+        return X, no_inversions
 
 
 ## merge & count split inversions ##
 def count_split_inv(X, Y):
     Z = []
     n = int(len(X))
+    m = int(len(Y))
+    max = 1000
     no_split_inversions = 0
 
     j = 0
     i = 0
-    m = 0
-    while m <= 1000:
-        if( X[i] < Y[j]):
+    while i <= max:
+        if i == n:
+            for j in range (j, m):
+                Z.append(Y[j])
+            break
+        if j == m:
+            for i in range (i, n):
+                Z.append(X[i])
+            break
+        elif X[i] < Y[j]:
             Z.append(X[i])
-            m = m+1
-            i = i+1
-            print("Z is ",Z)
-            print("m is ", m)
+            i += 1
         else:
             Z.append(Y[j])
-            m = m+1
-            j = j+1
-            print("Z is ",Z)
-            print("m is ", m)
-            no_split_inversions = no_split_inversions + (n - i)
+            j += 1
+            no_split_inversions += n - i
 
-    print("Z equals ", Z)
-    print("split inversions = ", no_split_inversions)
     return Z, no_split_inversions
+
 
 
 
 
 ## METHOD ##
 
-def inversions(X):
+def count_inversions(X):
 
 ## split array X into two subarrays, Left & Right ##
+    print("Starting new loop... Original array is ", X)
     number_inversions = 0
     Left, Right = divide(X)
-    (Left, no_inversions) = sort_and_count(Left)
-    number_inversions = number_inversions + no_inversions
-    (Right, no_inversions) = sort_and_count(Right)
-    number_inversions = number_inversions + no_inversions
-    (Z, no_split_inversions) = count_split_inv(Left, Right)
-    number_inversions = number_inversions + no_split_inversions
-    print(Z)
-    print(number_inversions)
+    print("Left & Right arrays are... ", Left, " & ", Right)
+    (L, left_inversions) = sort_and_count(Left)
+    print("Sorted Left array is...", L, "with inversions ", left_inversions)
+    number_inversions += left_inversions
+    (R, right_inversions) = sort_and_count(Right)
+    print("Sorted Right array is...", R, "with inversions ", right_inversions)
+    number_inversions += right_inversions
+    (Z, no_split_inversions) = count_split_inv(L, R)
+    number_inversions += no_split_inversions
+    print("Final sorted array is ", Z)
+    print("Total no. of inversions made ", number_inversions)
 
+    return Z, number_inversions
 
-
-A = [1, 3, 4, 2]
-inversions(A)
