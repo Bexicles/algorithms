@@ -18,7 +18,7 @@ def quicksort(A, n):
 def get_pivot(A, n):
 
     if n%2 == 0:
-        m = int(n/2)
+        m = int((n/2)-1)
     else:
         m = int((n-1)/2)
 
@@ -81,5 +81,5 @@ def run_quicksort(A):
 
 
 
-B = [9, 1, 5]
+B = [3, 20, 12, 14]
 run_quicksort(B)
