@@ -1,13 +1,14 @@
-import QuickSort.quickSort_firstPivot as QS
+from quicksort_pivot_median import run_quicksort
+
 
 A = []
 
-with open('./quickSort.txt') as f:
+with open('./quicksort.txt') as f:
     for line in f:
         A.append(int(line))
 
 len = int(len(A))
 print("Length of A", len)
 
-print(QS.runQuickSort(A))
+print(run_quicksort(A)[1])
 
