@@ -10,7 +10,6 @@ def quicksort(A, n):
         return A
 
     else:
-
         pivot = get_pivot(A, n)
         A = partition(A, pivot, n)
         return A
@@ -21,10 +20,9 @@ def get_pivot(A, n):
     if n%2 == 0:
         m = int(n/2)
     else:
-        m = int((n+1)/2)
+        m = int((n-1)/2)
 
     pivot = stat.median([A[0], A[m], A[n-1]])
-
     return pivot
 
 
@@ -70,6 +68,7 @@ def partition(A, pivot, n):
 
 
 def run_quicksort(A):
+    print("original array is", A)
     global count
     count = 0
 
@@ -81,3 +80,6 @@ def run_quicksort(A):
     return A, count
 
 
+
+B = [9, 1, 5]
+run_quicksort(B)
