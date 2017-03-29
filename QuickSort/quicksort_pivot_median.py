@@ -56,13 +56,13 @@ def partition(A, pivot, n):
 
     else:
         len_B = len(A[0:l])
-        len_C = len(A[l + 1:n])
+        len_C = len(A[l+1:n])
 
         if len_B > 0:
             A[0:l] = quicksort(A[0:l], len_B)
 
         if len_C > 0:
-            A[l + 1:n] = quicksort(A[l + 1:n], len_C)
+            A[l+1:n] = quicksort(A[l+1:n], len_C)
 
         return A
 
