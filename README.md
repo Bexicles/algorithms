@@ -4,5 +4,7 @@ Several popular algorithms that I've implemented while studying various computer
 
 These include:
 
-* Karatsuba Multiplication (in matlab)
-* Inversion Counting (in python)
+* Karatsuba Multiplication (matlab)
+* Inversion Counting (python)
+* QuickSort (python)
+* Karger's Contraction (python)
