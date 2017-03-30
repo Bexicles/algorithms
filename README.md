@@ -7,4 +7,4 @@ These include:
 * Karatsuba Multiplication (matlab)
 * Inversion Counting (python)
 * QuickSort (python)
-* Karger's Contraction (python)
+* Karger's Contraction for Min Cut (python)
