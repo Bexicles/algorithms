@@ -4,6 +4,7 @@ Several popular algorithms that I've implemented while studying various computer
 
 These include:
 
+* Recursive Dec to Hex Conversion (python)
 * Karatsuba Multiplication (matlab)
 * Inversion Counting (python)
 * QuickSort (python)
